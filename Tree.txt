@@ -1,0 +1,34 @@
+Listado de rutas de carpetas
+El número de serie del volumen es C6F6-D26B
+C:.
+¦   .env
+¦   package.json
+¦   README.md
+¦   Tree.txt
+¦   tsconfig.json
+¦   
++---backend
+¦   ¦   package.json
+¦   ¦   server.ts
+¦   ¦   
+¦   +---controllers
+¦   +---middleware
+¦   +---models
+¦   +---routes
+¦   +---services
+¦   +---utils
++---config
+¦       db.ts
+¦       
++---frontend
+¦   ¦   package.json
+¦   ¦   
+¦   +---app
+¦   +---assets
+¦   +---components
+¦   +---layouts
+¦   +---lib
++---scripts
++---shared
+    +---types
+    +---utils

@@ -1,0 +1,13 @@
+/* src/globals.css */
+@import "tailwindcss"; /* Tailwind v4: esta única importación es clave */
+
+/* Opcional: bases accesibles y tipografía suave */
+@layer base {
+  html { color-scheme: light; }
+  body { @apply bg-white text-gray-900 antialiased; }
+}
+
+/* Utilidades pequeñas de layout que usaremos en el esqueleto */
+@layer utilities {
+  .container-5xl { @apply mx-auto w-full max-w-5xl px-4; }
+}
