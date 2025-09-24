@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import "@/globals.css";
-import { CartProvider } from "@/context/CartContext"; // 👈 importa el provider
+import { CartProvider } from "@/context/CartContext";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -10,14 +11,23 @@ export const metadata: Metadata = {
   },
   description:
     "Tienda de camisetas personalizadas en Zaragoza. Compra online fácil, rápida y con estilo.",
+  metadataBase: new URL("https://okko-demo.vercel.app"), // cambia al dominio real
   openGraph: {
     title: "Okko — Camisetas personalizadas Zaragoza",
     description:
       "Tienda de camisetas personalizadas en Zaragoza. Compra online fácil, rápida y con estilo.",
-    url: "http://localhost:3000",
+    url: "https://okko-demo.vercel.app",
     siteName: "Okko",
     locale: "es_ES",
     type: "website",
+    images: ["/images/og-default.png"], // placeholder
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Okko — Camisetas personalizadas Zaragoza",
+    description:
+      "Tienda de camisetas personalizadas en Zaragoza. Compra online fácil, rápida y con estilo.",
+    images: ["/images/og-default.png"],
   },
   robots: {
     index: true,
@@ -32,41 +42,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="min-h-screen flex flex-col bg-white text-gray-900">
-        {/* 👇 Envolvemos todo en el provider */}
+      <body className="flex min-h-screen flex-col bg-white text-gray-900 antialiased">
         <CartProvider>
-          <header className="border-b bg-red-200">
-            <nav className="mx-auto max-w-5xl flex justify-between items-center p-4">
-              <Link href="/" className="text-lg font-bold text-blue-600">
-                Okko
-              </Link>
-              <ul className="flex gap-6 text-sm font-medium">
-                <li>
-                  <Link href="/products" className="hover:text-blue-600">
-                    Catálogo
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/cart" className="hover:text-blue-600">
-                    Carrito
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/login" className="hover:text-blue-600">
-                    Admin
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </header>
-
-          <main className="flex-1 mx-auto w-full max-w-5xl p-6">
-            {children}
-          </main>
-
-          <footer className="border-t bg-gray-50 text-center py-4 text-sm text-gray-600">
-            © {new Date().getFullYear()} Okko. Camisetas personalizadas en Zaragoza.
-          </footer>
+          <Header />
+          <main className="mx-auto w-full max-w-5xl flex-1 p-6">{children}</main>
+          <Footer />
         </CartProvider>
       </body>
     </html>
